@@ -17,6 +17,7 @@ module.exports = {
   },
 
   async create (request, response) {
+    // TODO: prevent empty data
     const { title, description, value } = request.body;
     const ong_id = request.headers.authorization;
 
@@ -31,6 +32,7 @@ module.exports = {
   },
 
   async delete (request, response) {
+    // TODO: Handle removal of a non-existing id
     const { id } = request.params;
     const ong_id = request.headers.authorization;
     

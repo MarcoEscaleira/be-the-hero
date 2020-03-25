@@ -2,12 +2,14 @@ const connection = require("../database/connection");
 const crypto = require("crypto");
 
 module.exports = {
-  async index(resquest, response) {
+  async index(request, response) {
     const ongs = await connection("ongs").select("*");
   
     return response.json(ongs);
   },
-  async create(resquest, response) {
+  async create(request, response) {
+    // TODO: Dont allow ONGS with duplicate name, email or whatsapp
+    // TODO: Provide a specif error message
     const { name, email, whatsapp, city, district } = request.body;
     const id = crypto.randomBytes(4).toString("HEX");
 
