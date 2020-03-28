@@ -17,7 +17,6 @@ module.exports = {
   },
 
   async create (request, response) {
-    // TODO: prevent empty data
     const { title, description, value } = request.body;
     const ong_id = request.headers.authorization;
 
@@ -32,7 +31,6 @@ module.exports = {
   },
 
   async delete (request, response) {
-    // TODO: Handle removal of a non-existing id
     const { id } = request.params;
     const ong_id = request.headers.authorization;
     
@@ -40,6 +38,14 @@ module.exports = {
       .where("id", id)
       .select("ong_id")
       .first();
+
+    if (!incident) {
+      return response
+        .status(400)
+        .json({
+          error: "No incident matches provided id"
+        })
+    }
 
     if (incident.ong_id !== ong_id) {
       return response
