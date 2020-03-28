@@ -1,8 +1,9 @@
 # TODO
 
- 1. Config eslint & prettier
- 2. Finalize all missing integration tests
- 3. Improve authentication with JWT 
+ 1. Extract celebrate middleware logic
+ 2. Config eslint & prettier
+ 3. Finalize all missing integration tests
+ 4. Improve authentication with JWT 
 
 ## Knex migration stuff
 https://knexjs.org/#Installation-migrations
